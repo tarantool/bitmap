@@ -1,4 +1,6 @@
 # Bitmap for Tarantool
+Special data type for bitmaps and bitwise operations. Several operations perform bitwise OR|AND|XOR operation between multiple tuples/bitmaps and store the result in the bitmap instance or destination tuple. 
+
 ![Test bitmap](https://github.com/tarantool/bitmap/workflows/Test%20bitmap/badge.svg)
 
 ## Requirements
