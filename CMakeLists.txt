@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8)
-project(bitset CXX)
+project(bitmap CXX)
 
 if (NOT USE_SIMD AND CMAKE_BUILD_TYPE EQUAL "Release")
     set(USE_SIMD TRUE)
@@ -39,13 +39,13 @@ if (NOT EXISTS "${PROJECT_SOURCE_DIR}/msgpuck/CMakeLists.txt")
 endif ()
 add_subdirectory(msgpuck)
 
-add_library(bitset SHARED bitset.cpp bitset.h ops.cpp ops.h)
-target_link_libraries(bitset msgpuck)
+add_library(bitmap SHARED bitmap.cpp bitmap.h ops.cpp ops.h)
+target_link_libraries(bitmap msgpuck)
 
-set_target_properties(bitset PROPERTIES
+set_target_properties(bitmap PROPERTIES
         PREFIX ""
         SUFFIX ".so"
-        OUTPUT_NAME "bitset")
+        OUTPUT_NAME "bitmap")
 
 set(LUA_PATH "LUA_PATH=${PROJECT_SOURCE_DIR}/?.lua\\;${PROJECT_SOURCE_DIR}/?/init.lua\\;\\;")
 set(LUA_SOURCE_DIR "LUA_SOURCE_DIR=${PROJECT_SOURCE_DIR}")
@@ -69,4 +69,4 @@ configure_file(
 
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/VERSION.lua
         DESTINATION ${TARANTOOL_INSTALL_LUADIR}/${PROJECT_NAME}/)
-install(TARGETS bitset LIBRARY DESTINATION ${TARANTOOL_INSTALL_LIBDIR})
+install(TARGETS bitmap LIBRARY DESTINATION ${TARANTOOL_INSTALL_LIBDIR})

@@ -1,13 +1,13 @@
-package = 'bitset'
+package = 'bitmap'
 version = 'scm-1'
 source  = {
-    url    = 'git://github.com/oleggator/bitset.git',
+    url    = 'git://github.com/tarantool/bitmap.git',
     branch = 'master',
 }
 description = {
-    summary  = "Bitset for Tarantool",
-    homepage = 'https://github.com/oleggator/bitset/',
-    license  = 'BSD',
+    summary  = "BitMap for Tarantool",
+    homepage = 'https://github.com/tarantool/bitmap/',
+    license  = 'MIT',
 }
 dependencies = {
     'lua >= 5.1',

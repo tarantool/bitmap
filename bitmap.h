@@ -1,12 +1,12 @@
-#ifndef BITSET_BITSET_H
-#define BITSET_BITSET_H
+#ifndef BITMAP_BITMAP_H
+#define BITMAP_BITMAP_H
 
 #include "ops.h"
 
 
 extern "C" {
 #include <tarantool/lauxlib.h>
-int luaopen_bitset(lua_State *L);
+int luaopen_bitmap(lua_State *L);
 }
 
 
@@ -14,7 +14,7 @@ typedef struct {
     uint64_t size;
     uint64_t bin_header_size;
     uint8_t msgpack[1]; // variable part
-} bitset_t;
+} bitmap_t;
 
 
 int lnew(lua_State *L);
@@ -66,9 +66,9 @@ int lreset(lua_State *L);
 int lset_bit_in_tuple_uint_key(lua_State *L);
 
 
-static const char libname[] = "bitset";
+static const char libname[] = "bitmap";
 
-static const struct luaL_Reg bitset_f[] = {
+static const struct luaL_Reg bitmap_f[] = {
     {"new",                       lnew},
     {"new_from_string",           lnew_from_string},
     {"new_from_tuple",            lnew_from_tuple},
@@ -86,7 +86,7 @@ static const struct luaL_Reg bitset_f[] = {
     {nullptr,                     nullptr},
 };
 
-static const struct luaL_Reg bitset_m[] = {
+static const struct luaL_Reg bitmap_m[] = {
     {"bor_in_place",        lbitwise_in_place<bit_or>},
     {"band_in_place",       lbitwise_in_place<bit_and>},
     {"bxor_in_place",       lbitwise_in_place<bit_xor>},
@@ -113,4 +113,4 @@ static const struct luaL_Reg bitset_m[] = {
     {nullptr,               nullptr},
 };
 
-#endif //BITSET_BITSET_H
+#endif //BITMAP_BITMAP_H
